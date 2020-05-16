@@ -1,0 +1,14 @@
+C:\Users\ProMa\source\repos\ProMasterBoy_Swapper\obj\Debug\ProMasterBoy_Swapper.csprojAssemblyReference.cache
+C:\Users\ProMa\source\repos\ProMasterBoy_Swapper\obj\Debug\ProMasterBoy_Swapper.Form1.resources
+C:\Users\ProMa\source\repos\ProMasterBoy_Swapper\obj\Debug\ProMasterBoy_Swapper.Properties.Resources.resources
+C:\Users\ProMa\source\repos\ProMasterBoy_Swapper\obj\Debug\ProMasterBoy_Swapper.csproj.GenerateResource.cache
+C:\Users\ProMa\source\repos\ProMasterBoy_Swapper\obj\Debug\ProMasterBoy_Swapper.Settings.resources
+C:\Users\ProMa\source\repos\ProMasterBoy_Swapper\obj\Debug\ProMasterBoy_Swapper.csproj.CoreCompileInputs.cache
+C:\Users\ProMa\source\repos\ProMasterBoy_Swapper\bin\Debug\Newtonsoft.Json.xml
+C:\Users\ProMa\source\repos\ProMasterBoy_Swapper\obj\Debug\ProMasterBoy_Swapper.csproj.CopyComplete
+C:\Users\ProMa\source\repos\ProMasterBoy_Swapper\bin\Debug\SwapperTemplate.exe.config
+C:\Users\ProMa\source\repos\ProMasterBoy_Swapper\bin\Debug\SwapperTemplate.exe
+C:\Users\ProMa\source\repos\ProMasterBoy_Swapper\bin\Debug\SwapperTemplate.pdb
+C:\Users\ProMa\source\repos\ProMasterBoy_Swapper\obj\Debug\SwapperTemplate.exe
+C:\Users\ProMa\source\repos\ProMasterBoy_Swapper\obj\Debug\SwapperTemplate.pdb
+C:\Users\ProMa\source\repos\ProMasterBoy_Swapper\obj\Debug\ProMasterBoy_Swapper.csproj.Fody.CopyLocal.cache
