@@ -8,8 +8,8 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("Swapper Template")]
 [assembly: AssemblyDescription("Swapper Template Made by Kye | Owner of Pro Swapper")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Pro Swapper")]
-[assembly: AssemblyProduct("SwapperTemplate")]
+[assembly: AssemblyCompany("Kye")]
+[assembly: AssemblyProduct("KyeSwapperTemplate")]
 [assembly: AssemblyCopyright("Copyright ©  2020")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("b7b80edb-78f5-40f8-9d95-43e0aa076f2c")]
+[assembly: Guid("35befc96-2c91-458c-a592-7f12be3d9414")]
 
 // Version information for an assembly consists of the following four values:
 //

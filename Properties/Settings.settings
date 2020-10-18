@@ -1,15 +1,12 @@
 ﻿<?xml version='1.0' encoding='utf-8'?>
-<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="ProMasterBoy_Swapper.Properties" GeneratedClassName="Settings">
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="KyeSwapperTemplate.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
-    <Setting Name="PaksLocation" Type="System.String" Scope="User">
-      <Value Profile="(Default)">C:\Program Files\Epic Games\Fortnite\FortniteGame\Content\Paks</Value>
-    </Setting>
-    <Setting Name="offset" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">1000</Value>
-    </Setting>
     <Setting Name="item" Type="System.String" Scope="User">
       <Value Profile="(Default)">???</Value>
+    </Setting>
+    <Setting Name="Paks" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
     </Setting>
   </Settings>
 </SettingsFile>

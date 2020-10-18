@@ -1,27 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
-using ProMasterBoy_Swapper.Properties;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 
-namespace ProMasterBoy_Swapper
+namespace KyeSwapperTemplate
 {
     public partial class Settings : Form
     {
         public Settings()
         {
             InitializeComponent();
-            string pakfiles = "";
-            pakfiles = Properties.Settings.Default.PaksLocation;
-            textBox1.Text = pakfiles;
+            textBox1.Text = Properties.Settings.Default.Paks;
         }
 
         private void RevertB_Click(object sender, EventArgs e)
@@ -30,91 +18,45 @@ namespace ProMasterBoy_Swapper
             choosepakfiles.RootFolder = Environment.SpecialFolder.MyComputer;
             choosepakfiles.Description = @"Please select your paks folder";
             choosepakfiles.ShowNewFolderButton = false;
-            if (choosepakfiles.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            if (choosepakfiles.ShowDialog() == DialogResult.OK)
             {
-                string choosepakfiles2 = choosepakfiles.SelectedPath;
-                string pakfiles = "New Pak Files Here";
-                MessageBox.Show("Pak Files are now located at: " + choosepakfiles2);
-                pakfiles = choosepakfiles2;
-                textBox1.Text = pakfiles;
+                MessageBox.Show("Pak Files are now located at: " + choosepakfiles.SelectedPath);
+                SavePaks(choosepakfiles.SelectedPath);
             }
-
         }
-
-        private void Settings_Load(object sender, EventArgs e)
+        private void SavePaks(string location)
         {
-            Properties.Settings.Default.PaksLocation = textBox1.Text;
+            textBox1.Text = location;
+            Properties.Settings.Default.Paks = location;
             Properties.Settings.Default.Save();
         }
-
-        private void Settings_FormClosing(object sender, FormClosingEventArgs e)
+        
+        private void FindPaksB_Click(object sender, EventArgs e)
         {
-            Properties.Settings.Default.PaksLocation = textBox1.Text;
-            Properties.Settings.Default.Save();
-        }
-
-
-        private static string GetEpicDirectory() => Directory.Exists(@"C:\ProgramData\Epic") ? @"C:\ProgramData\Epic" : Directory.Exists(@"D:\ProgramData\Epic") ? @"D:\ProgramData\Epic" : Directory.Exists(@"E:\ProgramData\Epic") ? @"E:\ProgramData\Epic" : @"F:\ProgramData\Epic";
-        private static bool DatFileExists() => File.Exists($@"{GetEpicDirectory()}\UnrealEngineLauncher\LauncherInstalled.dat");
-
-        private void RevertB_Click_1(object sender, EventArgs e)
-        {
-            /*
-            * 
-            * 
-            * This function require:
-            * using AutoPathPaksFinder.Classes;
-            * using AutoPathPaksFinder.Properties;
-            * using Newtonsoft.Json;
-            * using Newtonsoft.Json.Linq;
-            * 
-            * Create a settings called "pathpaks" (Using it line 51 of this Class).
-            * Copy the Class called "Utilities" in AutoPath>Classes>Utilities.cs (Using it line 38 of this Class).     
-            * 
-            * Put these at the beginning of the files as I did : 
-            * private static string GetEpicDirectory() => Directory.Exists(@"C:\ProgramData\Epic") ? @"C:\ProgramData\Epic" : Directory.Exists(@"D:\ProgramData\Epic") ? @"D:\ProgramData\Epic" : Directory.Exists(@"E:\ProgramData\Epic") ? @"E:\ProgramData\Epic" : @"F:\ProgramData\Epic";
-            * private static bool DatFileExists() => File.Exists($@"{GetEpicDirectory()}\UnrealEngineLauncher\LauncherInstalled.dat");
-            * 
-            * 
-            * Made by yanis#0001 <---- Credit tysm from yanis/whey! - Kye
-            */
-            if (DatFileExists())
+            try
             {
-                string jsonData = File.ReadAllText($@"{GetEpicDirectory()}\UnrealEngineLauncher\LauncherInstalled.dat");
-                if (Utilities.IsValidJson(jsonData))
+                string line;
+                string path;
+                string EpicDir = Swapper.GetEpicDir();
+                if (EpicDir == "a")
+                    MessageBox.Show("Please select your pak files manually!", Form1.swappername, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+                StreamReader file = new StreamReader(EpicDir);
+                while ((line = file.ReadLine()) != null)
                 {
-                    JToken FortnitePath = JsonConvert.DeserializeObject<JToken>(jsonData);
-                    if (FortnitePath != null)
+                    if (line.Contains("\"InstallLocation\"") && line.Contains("Fortnite"))
                     {
-                        JArray installationListArray = FortnitePath["InstallationList"].Value<JArray>();
-                        if (installationListArray != null)
-                        {
-                            foreach (JToken FortnitePathReal in installationListArray)
-                            {
-                                if (string.Equals(FortnitePathReal["AppName"].Value<string>(), "Fortnite"))
-                                {
-                                    string path = $@"{FortnitePathReal["InstallLocation"].Value<string>()}\FortniteGame\Content\Paks";
-                                    Properties.Settings.Default.PaksLocation = path;
-                                    Properties.Settings.Default.Save();
-                                    textBox1.Text = Properties.Settings.Default.PaksLocation;
-                                    Properties.Settings.Default.PaksLocation = textBox1.Text;
-                                    Properties.Settings.Default.Save();
-                                    MessageBox.Show("Pak Files are now saved at " + Properties.Settings.Default.PaksLocation, "Pro Swapper", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                }
-                            }
-                        }
+                        path = line.Replace("\"InstallLocation\": \"", "").Replace(@"\\", @"\").Replace("Fortnite\",", @"Fortnite\FortniteGame\Content\Paks").Trim();
+                        SavePaks(path);
+                        break;
                     }
                 }
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("Could not find your pak files! Please select them manually!", "Pro Swapper", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message);
             }
         }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show(Utilities.credits, "Credits");
-        }
+        private void button1_Click(object sender, EventArgs e) => MessageBox.Show("This was made with a swapper template originally made by Kye (aka owner of Pro Swapper)", "Credits | Kye", MessageBoxButtons.OK, MessageBoxIcon.Information);
     }
 }

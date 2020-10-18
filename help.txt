@@ -1,0 +1,9 @@
+﻿Info
+=====
+https://github.com/promasterboy
+===
+Offsets:
+
+e.g: public long swap1offset = 70000000;
+The 70000000 is where in the pak files it searches it from. The number should be lower than the original dec offset so after Fortnite updates it still works!
+The bytes are the Hex codes in decimal, you can use something like this: https://www.convzone.com/hex-to-decimal/ then put the commas in the decimal by replacing each " " (space) with "," (comma)
